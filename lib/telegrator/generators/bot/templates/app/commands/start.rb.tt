@@ -1,0 +1,7 @@
+module Commands
+  class Start < Base
+    def invoke
+      say 'Добро пожаловать.'
+    end
+  end
+end

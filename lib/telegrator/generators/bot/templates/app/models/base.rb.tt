@@ -1,0 +1,5 @@
+module Models
+  class Base < Sequel::Model
+    plugin :timestamps
+  end
+end

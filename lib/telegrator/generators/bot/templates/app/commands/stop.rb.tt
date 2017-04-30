@@ -1,0 +1,7 @@
+module Commands
+  class Stop < Base
+    def invoke
+      say 'До свидания.'
+    end
+  end
+end

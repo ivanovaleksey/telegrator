@@ -1,0 +1,31 @@
+source 'https://rubygems.org'
+
+gem 'dotenv'
+gem 'rake'
+gem 'sidekiq'
+gem 'telegram-bot-ruby'
+
+<%- if postgresql? -%>
+gem 'pg'
+gem 'sequel'
+<%- elsif mongodb? -%>
+gem 'mongoid'
+<%- end -%>
+
+<%- unless options.skip_webhook? -%>
+gem 'puma'
+gem 'rack-contrib'
+<%- end -%>
+
+<%- unless options.skip_capistrano? -%>
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-sidekiq'
+
+  <%- unless options.skip_webhook? -%>
+  gem 'capistrano3-puma'
+  <%- end -%>
+end
+<%- end -%>

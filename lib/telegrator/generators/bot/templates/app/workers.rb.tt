@@ -1,0 +1,4 @@
+module Workers
+  autoload :Base,      'workers/base'
+  autoload :Processor, 'workers/processor'
+end

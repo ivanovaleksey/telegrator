@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/boot', __FILE__)
+
+BOT.run do |bot|
+  bot.listen do |message|
+    Workers::Processor.perform_async YAML.dump(message)
+  end
+end
