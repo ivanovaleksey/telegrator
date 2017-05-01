@@ -1,0 +1,4 @@
+module Models
+  autoload :Base, 'models/base'
+  autoload :User, 'models/user'
+end

@@ -1,0 +1,7 @@
+module Commands
+  class Missing < Base
+    def invoke
+      say 'Неизвестная команда.'
+    end
+  end
+end

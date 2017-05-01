@@ -1,0 +1,28 @@
+module Keyboards
+  class Base
+    attr_reader :keyboard, :user
+
+    def self.show(*args)
+      new(*args).show
+    end
+
+    def initialize(user)
+      @keyboard = define_keyboard
+      @user = user
+    end
+
+    def show
+      BOT.api.send_message(chat_id: user.telegram_id, text: text, reply_markup: keyboard)
+    end
+
+    private
+
+    def define_keyboard
+      raise NotImplementedError
+    end
+
+    def text
+      raise NotImplementedError
+    end
+  end
+end

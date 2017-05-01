@@ -22,7 +22,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can easily set up a new bot project:
+
+    $ telegrator new foo_bot
+
+This will generate a skeleton structure like this:
+```
+foo_bot/
+|__ app/
+    |__ commands/
+    |__ keyboards/
+    |__ models/
+    |__ workers/
+    |__ commands.rb
+    |__ keyboards.rb
+    |__ models.rb
+    |__ workers.rb
+|__ bin/
+    |__ bot
+|__ config/
+    |__ boot.rb
+    |__ initializers/
+        |__ ...
+|__ log/
+    |__ .keep
+|__ Gemfile
+|__ Rakefile
+```
 
 ## Development
 

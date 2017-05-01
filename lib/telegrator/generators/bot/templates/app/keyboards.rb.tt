@@ -1,0 +1,3 @@
+module Keyboards
+  autoload :Base, 'keyboards/base'
+end
