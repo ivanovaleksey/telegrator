@@ -65,7 +65,7 @@ module Telegrator
 
       # === bin/ directory ===
       def create_bin_dir
-        directory 'bin'
+        directory 'bin', mode: :preserve
       end
 
       # === config/ directory ===
