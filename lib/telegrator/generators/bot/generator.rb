@@ -85,6 +85,11 @@ module Telegrator
         create_file 'log/.keep'
       end
 
+      def create_dotenv_file
+        template '.env.tt', '.env.sample'
+        template '.env.tt'
+      end
+
       def create_gemfile
         template 'Gemfile.tt'
       end
