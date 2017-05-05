@@ -71,6 +71,7 @@ module Telegrator
       # === config/ directory ===
       def create_config_dir
         directory 'config'
+        remove_file 'config/initializers/sequel.rb' if mongodb?
       end
 
       # === lib/ directory ===
@@ -82,6 +83,11 @@ module Telegrator
       def create_log_dir
         empty_directory 'log'
         create_file 'log/.keep'
+      end
+
+      def create_dotenv_file
+        template '.env.tt', '.env.sample'
+        template '.env.tt'
       end
 
       def create_gemfile
