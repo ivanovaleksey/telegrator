@@ -71,6 +71,7 @@ module Telegrator
       # === config/ directory ===
       def create_config_dir
         directory 'config'
+        remove_file 'config/initializers/sequel.rb' if mongodb?
       end
 
       # === lib/ directory ===
