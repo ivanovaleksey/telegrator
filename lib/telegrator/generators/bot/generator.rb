@@ -37,8 +37,11 @@ module Telegrator
 
       def create_root_files
         template 'gitignore.tt', '.gitignore'
+        inside { run 'git init' }
+
         template 'env.tt', '.env.sample'
         template 'env.tt', '.env'
+
         template 'Gemfile.tt'
         template 'Rakefile.tt'
       end
