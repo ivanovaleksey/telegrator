@@ -36,7 +36,7 @@ module Telegrator
       argument :name
 
       def create_root_files
-        template '.gitignore.tt'
+        template 'gitignore.tt', '.gitignore'
         template '.env.tt', '.env.sample'
         template '.env.tt'
         template 'Gemfile.tt'
