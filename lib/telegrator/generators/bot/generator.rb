@@ -85,9 +85,16 @@ module Telegrator
         remove_file 'config/initializers/sequel.rb' if mongodb?
       end
 
+      # === db/ directory ===
+      def create_db_dir
+        return if mongodb?
+        directory 'db'
+      end
+
       # === lib/ directory ===
       def create_lib_dir
-        empty_directory 'lib/tasks'
+        directory 'lib'
+        remove_file 'lib/tasks/db.rake' if mongodb?
       end
 
       # === log/ directory ===
