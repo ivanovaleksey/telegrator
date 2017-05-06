@@ -35,6 +35,14 @@ module Telegrator
 
       argument :name
 
+      def create_root_files
+        template 'gitignore.tt', '.gitignore'
+        template 'env.tt', '.env.sample'
+        template 'env.tt', '.env'
+        template 'Gemfile.tt'
+        template 'Rakefile.tt'
+      end
+
       # === app/ directory ===
       def create_app_dir
         empty_directory 'app'
@@ -83,23 +91,6 @@ module Telegrator
       def create_log_dir
         empty_directory 'log'
         create_file 'log/.keep'
-      end
-
-      def create_gitignore_file
-        template '.gitignore.tt'
-      end
-
-      def create_dotenv_file
-        template '.env.tt', '.env.sample'
-        template '.env.tt'
-      end
-
-      def create_gemfile
-        template 'Gemfile.tt'
-      end
-
-      def create_rakefile
-        template 'Rakefile.tt'
       end
 
       private
