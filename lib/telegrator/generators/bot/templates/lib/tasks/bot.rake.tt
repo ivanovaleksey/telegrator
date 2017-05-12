@@ -1,0 +1,29 @@
+namespace :bot do
+  desc 'Set up webhook'
+  task :set_webhook, [:url, :cert] do |_, args|
+    options = {}
+    options[:url] = args[:url]
+    unless args[:cert].nil?
+      cert = Faraday::UploadIO.new(args[:cert], 'application/x-pem-file')
+      options[:certificate] = cert
+    end
+
+    puts BOT.api.set_webhook(options)
+  end
+
+  desc 'Delete webhook'
+  task :delete_webhook do
+    puts BOT.api.delete_webhook
+  end
+
+  desc 'Create self-signed certificate'
+  task :create_cert, :host do |_, args|
+    dir = ROOT.join('ssl')
+    Dir.mkdir(dir) unless Dir.exist?(dir)
+
+    sh <<-COMMAND
+      openssl req -x509 -nodes -days 365 -newkey rsa:2048 -sha256 -keyout ssl/bot.key -out ssl/bot.pem \
+        -subj '/C=RU/CN=#{args[:host]}'
+    COMMAND
+  end
+end
