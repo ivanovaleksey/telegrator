@@ -1,0 +1,1 @@
+server fetch(:cap_host), user: fetch(:cap_user), roles: %w(app db web)
