@@ -1,0 +1,16 @@
+# Offense count: 3
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Max: 99
+
+# Offense count: 5
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'lib/telegrator.rb'
+    - 'lib/telegrator/cli.rb'
+    - 'lib/telegrator/generators.rb'
+    - 'lib/telegrator/generators/base.rb'
+    - 'lib/telegrator/generators/bot/generator.rb'
