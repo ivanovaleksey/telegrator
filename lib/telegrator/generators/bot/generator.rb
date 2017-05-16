@@ -3,7 +3,7 @@ module Telegrator
     class Bot < Base
       include Thor::Actions
 
-      DATABASES = %w[postgresql mongodb]
+      DATABASES = %w[postgresql mongodb].freeze
 
       # TODO: move to Base class
       def self.source_root
