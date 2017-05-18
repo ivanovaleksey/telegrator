@@ -1,0 +1,8 @@
+namespace :setup do
+  desc 'Upload .env file'
+  task :upload_dotenv do
+    on roles(:app) do
+      upload! StringIO.new(File.read('.env')), File.join(shared_path, '.env')
+    end
+  end
+end

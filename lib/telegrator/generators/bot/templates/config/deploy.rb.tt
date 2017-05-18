@@ -1,0 +1,21 @@
+lock '3.8.1'
+
+require 'dotenv'
+Dotenv.load
+
+set :application, '<%= name %>'
+set :deploy_to, "/home/deployer/#{fetch(:application)}"
+set :repo_url, `git remote get-url origin`.chomp
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
+set :cap_host, ENV['CAP_HOST']
+set :cap_user, ENV['CAP_USER']
+
+set :linked_files, %w(.env)
+set :linked_dirs,  %w(log tmp/pids tmp/sockets)
+
+set :default_env, path: '~/.rbenv/shims:~/.rbenv/bin:$PATH'
+
+set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid')
+set :sidekiq_config, File.join(current_path, 'config', 'sidekiq.yml')
+set :sidekiq_require, File.join(current_path, 'app', 'boot.rb')

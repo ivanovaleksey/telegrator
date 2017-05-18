@@ -44,6 +44,7 @@ module Telegrator
 
         template 'Gemfile.tt'
         template 'Rakefile.tt'
+        template 'Capfile.tt' unless options[:skip_capistrano]
       end
 
       # === app/ directory ===
@@ -82,6 +83,11 @@ module Telegrator
       # === config/ directory ===
       def create_config_dir
         directory 'config'
+
+        if options[:skip_capistrano]
+          remove_file 'config/deploy/'
+          remove_file 'config/deploy.rb'
+        end
         remove_file 'config/initializers/sequel.rb' if mongodb?
       end
 
