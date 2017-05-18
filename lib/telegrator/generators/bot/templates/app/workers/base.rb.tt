@@ -1,0 +1,6 @@
+module Workers
+  class Base
+    include Sidekiq::Worker
+    sidekiq_options retry: false
+  end
+end

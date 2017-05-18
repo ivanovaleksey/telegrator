@@ -1,0 +1,3 @@
+require 'telegram/bot'
+
+BOT = Telegram::Bot::Client.new(ENV['BOT_TOKEN'], logger: Logger.new('log/bot.log'))

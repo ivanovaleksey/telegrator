@@ -1,0 +1,14 @@
+require 'bundler/setup'
+
+Dir.glob(File.expand_path('../../config/initializers/*.rb', __FILE__)).sort.each do |f|
+  require f
+end
+
+$LOAD_PATH.unshift ROOT.join('app').to_s
+
+require 'commands'
+<%- unless options.skip_keyboards? -%>
+require 'keyboards'
+<%- end -%>
+require 'models'
+require 'workers'

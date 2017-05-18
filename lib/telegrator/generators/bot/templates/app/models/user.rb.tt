@@ -1,0 +1,5 @@
+module Models
+  class User < Base
+    set_dataset :users
+  end
+end

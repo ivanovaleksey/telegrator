@@ -1,5 +1,5 @@
-require "telegrator/version"
+require 'telegrator/generators'
+require 'telegrator/version'
 
 module Telegrator
-  # Your code goes here...
 end

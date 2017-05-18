@@ -1,0 +1,28 @@
+module Commands
+  class Base
+    def self.invoke(*args)
+      new(*args).invoke
+    end
+
+    def initialize(message, user)
+      @message = message
+      @user = user
+    end
+
+    def invoke
+      raise NotImplementedError
+    end
+
+    private
+
+    attr_reader :message, :user
+
+    def say(text)
+      send_message(user.telegram_id, text)
+    end
+
+    def send_message(chat_id, text)
+      BOT.api.send_message(chat_id: chat_id, text: text, parse_mode: 'Markdown')
+    end
+  end
+end

@@ -1,0 +1,31 @@
+namespace :db do
+  desc 'Show current schema version'
+  task :version do
+    version =
+      if DB.table_exists?(:schema_info)
+        DB.from(:schema_info).get(:version)
+      else
+        0
+      end
+    puts "Schema Version: #{version}"
+  end
+
+  desc 'Migrate the database'
+  task :migrate do
+    Sequel.extension(:migration)
+    Sequel::Migrator.run(DB, ROOT.join('db', 'migrate'))
+  end
+
+  desc 'Rollback to specified target'
+  task :rollback, :target do |_, args|
+    Sequel.extension(:migration)
+    Sequel::Migrator.run(DB, ROOT.join('db', 'migrate'), target: args[:target].to_i)
+    Rake::Task['db:version'].execute
+  end
+
+  desc 'Seed db with initial data'
+  task :seed do
+    Sequel.extension(:seed)
+    Sequel::Seeder.apply(DB, ROOT.join('db', 'seeds'))
+  end
+end

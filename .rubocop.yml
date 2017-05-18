@@ -1,0 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/LineLength:
+  IgnoredPatterns:
+    - !ruby/regexp /\A\s+class_option/
