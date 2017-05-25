@@ -11,4 +11,5 @@ require 'commands'
 require 'keyboards'
 <%- end -%>
 require 'models'
+require 'services'
 require 'workers'
