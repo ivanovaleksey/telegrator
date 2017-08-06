@@ -18,6 +18,9 @@ module Telegrator
       class_option :database, type: :string, aliases: '-d', default: 'postgresql', enum: DATABASES,
                               desc: 'Preconfigure for selected database'
 
+      class_option :skip_bundler, type: :boolean, default: false,
+                                  desc: 'Skip Bundler'
+
       class_option :skip_capistrano, type: :boolean, default: false,
                                      desc: 'Skip Capistrano'
 
@@ -37,7 +40,6 @@ module Telegrator
 
       def create_root_files
         template 'gitignore.tt', '.gitignore'
-        inside { run 'git init' }
 
         template 'env.tt', '.env.sample'
         template 'env.tt', '.env'
@@ -107,6 +109,11 @@ module Telegrator
       def create_log_dir
         empty_directory 'log'
         create_file 'log/.keep'
+      end
+
+      def init
+        inside { run 'git init' }
+        inside { run 'bundle install' } unless options[:skip_bundler]
       end
 
       private
