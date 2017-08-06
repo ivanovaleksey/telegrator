@@ -72,6 +72,11 @@ module Telegrator
         directory 'app/models'
       end
 
+      def create_services
+        template 'app/services.rb'
+        directory 'app/services'
+      end
+
       def create_workers
         template 'app/workers.rb'
         directory 'app/workers'
