@@ -1,4 +1,12 @@
 namespace :db do
+  desc 'Create the database'
+  task :create do
+    Sequel.connect(ENV['DATABASE_URL']) do |db|
+      db.execute "CREATE DATABASE test_db"
+    end
+    # DB.run("SELECT 1")
+  end
+
   desc 'Show current schema version'
   task :version do
     version =
