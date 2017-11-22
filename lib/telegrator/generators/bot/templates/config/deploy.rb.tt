@@ -18,4 +18,4 @@ set :default_env, path: '~/.rbenv/shims:~/.rbenv/bin:$PATH'
 
 set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid')
 set :sidekiq_config, File.join(current_path, 'config', 'sidekiq.yml')
-set :sidekiq_require, File.join(current_path, 'app', 'boot.rb')
+set :sidekiq_require, File.join(current_path, 'config', 'boot.rb')
