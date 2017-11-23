@@ -1,0 +1,17 @@
+require 'rack/contrib'
+require File.expand_path('../config/boot', __FILE__)
+
+class Listener
+  def call(env)
+    req = Rack::Request.new(env)
+
+    update = Telegram::Bot::Types::Update.new(req.params)
+    Services::Processor.call YAML.dump(update.current_message)
+
+    [200, {}, []]
+  end
+end
+
+use Rack::PostBodyContentTypeParser
+
+run Listener.new

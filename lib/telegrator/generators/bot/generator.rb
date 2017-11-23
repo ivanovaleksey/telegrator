@@ -47,6 +47,7 @@ module Telegrator
         template 'Gemfile.tt'
         template 'Rakefile.tt'
         template 'Capfile.tt' unless options[:skip_capistrano]
+        template 'config.ru.tt' unless options[:skip_webhook]
       end
 
       # === app/ directory ===
