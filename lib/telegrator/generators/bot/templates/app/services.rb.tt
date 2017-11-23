@@ -1,2 +1,3 @@
 module Services
+  autoload :Processor, 'services/processor'
 end
