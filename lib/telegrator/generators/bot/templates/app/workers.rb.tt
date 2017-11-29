@@ -1,4 +1,5 @@
 module Workers
-  autoload :Base,      'workers/base'
-  autoload :Processor, 'workers/processor'
 end
+
+require 'workers/base'
+require 'workers/processor'

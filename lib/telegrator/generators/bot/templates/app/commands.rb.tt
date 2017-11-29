@@ -1,6 +1,7 @@
 module Commands
-  autoload :Base,    'commands/base'
-  autoload :Start,   'commands/start'
-  autoload :Stop,    'commands/stop'
-  autoload :Missing, 'commands/missing'
 end
+
+require 'commands/base'
+require 'commands/start'
+require 'commands/stop'
+require 'commands/missing'

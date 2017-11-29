@@ -1,3 +1,4 @@
 module Services
-  autoload :Processor, 'services/processor'
 end
+
+require 'services/processor'
