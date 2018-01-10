@@ -1,5 +1,3 @@
-require 'thor'
-
 module Telegrator
   class CLI < Thor
     desc 'version', 'Print version info'

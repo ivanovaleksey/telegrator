@@ -1,3 +1,5 @@
+require 'thor'
+
 require 'telegrator/generators'
 require 'telegrator/version'
 
