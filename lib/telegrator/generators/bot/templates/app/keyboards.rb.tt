@@ -1,3 +1,4 @@
 module Keyboards
-  autoload :Base, 'keyboards/base'
 end
+
+require 'keyboards/base'
